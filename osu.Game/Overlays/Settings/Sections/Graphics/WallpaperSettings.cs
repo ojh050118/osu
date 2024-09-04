@@ -19,7 +19,7 @@ namespace osu.Game.Overlays.Settings.Sections.Graphics
         [BackgroundDependencyLoader]
         private void load(GameHost host, IDialogOverlay? dialogOverlay, FrameworkConfigManager frameworkConfig)
         {
-            var window = host.Window as SDL2Window;
+            var window = (SDL2Window)host.Window;
 
             Children = new Drawable[]
             {
@@ -31,7 +31,7 @@ namespace osu.Game.Overlays.Settings.Sections.Graphics
                 new SettingsButton
                 {
                     Text = "Change window parent to SysListView32",
-                    Action = () => WindowHelper.SetParentToDesktop(window.WindowHandle, WindowParent.SysListView32, window.Position.X, window.Position.Y, window.Size.Width, window.Size.Height)
+                    Action = () => WindowHelper.SetParentToDesktop(window, WindowParent.SysListView32, window.Displays)
                 },
                 new DangerousSettingsButton
                 {
@@ -40,7 +40,7 @@ namespace osu.Game.Overlays.Settings.Sections.Graphics
                     {
                         dialogOverlay?.Push(new MassDeleteConfirmationDialog(() =>
                         {
-                            WindowHelper.SetParentToDesktop(window.WindowHandle, WindowParent.WorkerW, window.Position.X, window.Position.Y, window.Size.Width, window.Size.Height);
+                            WindowHelper.SetParentToDesktop(window, WindowParent.WorkerW, window.Displays);
                         }, "Do you want to switch Window's parent to WorkerW? This action cannot be undone!"));
                     }
                 },
