@@ -32,10 +32,8 @@ using osu.Framework.Input.Handlers.Tablet;
 using osu.Framework.Localisation;
 using osu.Framework.Logging;
 using osu.Framework.Platform;
-using osu.Framework.Platform.SDL2;
 using osu.Framework.Screens;
 using osu.Framework.Threading;
-using osu.Framework.Utils;
 using osu.Game.Beatmaps;
 using osu.Game.Collections;
 using osu.Game.Configuration;
@@ -319,12 +317,6 @@ namespace osu.Game
 
             if (host.Window != null)
             {
-                var window = Window as SDL2Window;
-                if (LocalConfig.Get<bool>(OsuSetting.WorkerW))
-                    WindowHelper.SetParentToDesktop(window.WindowHandle, WindowParent.WorkerW, window.Position.X, window.Position.Y, window.Size.Width, window.Size.Height);
-
-                LocalConfig.GetBindable<bool>(OsuSetting.WorkerW).Value = false;
-
                 host.Window.DragDrop += path =>
                 {
                     // on macOS/iOS, URL associations are handled via SDL_DROPFILE events.

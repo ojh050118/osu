@@ -205,8 +205,6 @@ namespace osu.Game.Configuration
 
             SetDefault(OsuSetting.EditorTimelineShowTimingChanges, true);
             SetDefault(OsuSetting.EditorTimelineShowTicks, true);
-
-            SetDefault(OsuSetting.WorkerW, false);
         }
 
         protected override bool CheckLookupContainsPrivateInformation(OsuSetting lookup)
@@ -431,7 +429,5 @@ namespace osu.Game.Configuration
         HideCountryFlags,
         EditorTimelineShowTimingChanges,
         EditorTimelineShowTicks,
-
-        WorkerW,
     }
 }

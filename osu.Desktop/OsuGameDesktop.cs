@@ -137,6 +137,9 @@ namespace osu.Desktop
         {
             base.LoadComplete();
 
+            if (RuntimeInfo.OS == RuntimeInfo.Platform.Windows)
+                LoadComponentAsync(new BossKeyManager(), Add);
+
             LoadComponentAsync(new DiscordRichPresence(), Add);
 
             if (RuntimeInfo.OS == RuntimeInfo.Platform.Windows)
